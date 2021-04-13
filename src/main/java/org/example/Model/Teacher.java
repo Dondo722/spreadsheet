@@ -20,6 +20,14 @@ public class Teacher {
         this.workExperience = workExperience;
     }
 
+    public static String[] getNames(){
+         return new String[]{"Faculty","Department","Teacher\n name:","Academic\n rank","Academic\n degree","Work\n experience"};
+    }
+
+    public static String[] getNamesVal(){
+        return new String[]{"faculty","departmentName","fullName","academicRank","academicDegree","workExperience"};
+    }
+
     public String getFaculty() {
         return faculty;
     }

@@ -1,4 +1,4 @@
-package org.example.Controller.AddBoxItems;
+package org.example.View.AddBoxItems;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -20,6 +20,12 @@ public class AddPeriodItem extends HBox{
         textFieldMonths.promptTextProperty().set("months");
         textFieldMonths.setPrefWidth(fieldsWidth);
         this.getChildren().addAll(label,textFieldYears,textFieldMonths);
+    }
+    public String getPeriodMonths(){
+        return textFieldMonths.getText();
+    }
+    public String getPeriodYears(){
+        return textFieldYears.getText();
     }
     public Period getPeriod(){
         int years =  Integer.parseInt(textFieldYears.getText());

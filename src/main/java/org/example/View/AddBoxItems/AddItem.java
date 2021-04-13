@@ -1,4 +1,4 @@
-package org.example.Controller.AddBoxItems;
+package org.example.View.AddBoxItems;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
