@@ -4,7 +4,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-import java.time.Period;
 
 public class AddPeriodItem extends HBox{
     private final TextField textFieldYears = new TextField();
@@ -27,13 +26,7 @@ public class AddPeriodItem extends HBox{
     public String getPeriodYears(){
         return textFieldYears.getText();
     }
-    public Period getPeriod(){
-        int years =  Integer.parseInt(textFieldYears.getText());
-        int months = Integer.parseInt(textFieldMonths.getText());
-        return Period.of(years,months,0);
-    }
-    public boolean isPeriod(){
-        return (!textFieldYears.getText().isEmpty() && !textFieldMonths.getText().isEmpty() &&
-                !textFieldYears.getText().matches("[a-zA-Z]+$") && !textFieldMonths.getText().matches("[a-zA-Z]+$"));
+    public String getPeriod(){
+        return textFieldYears.getText() + " " + textFieldMonths.getText();
     }
 }

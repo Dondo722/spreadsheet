@@ -6,11 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AlertBox {
     public static void display(){
         Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Alert!");
 
         VBox vBox = new VBox();

@@ -16,9 +16,6 @@ import org.example.View.AddBoxItems.AddItem;
 
 public class AddBox {
     private final Stage window = new Stage();
-    int boxHeight = 250;
-    int boxPadding = 10;
-    int boxSpacing = 8;
     int spacing = 5;
     int itemLabelWidth = 100;
     int itemFieldWidth = 310;
@@ -43,11 +40,12 @@ public class AddBox {
 
 
         VBox root  = new VBox();
-        root.setPadding(new Insets(boxPadding));
-        root.setSpacing(boxSpacing);
+        root.setPadding(new Insets(10));
+        root.setSpacing(8);
         root.getChildren().addAll(facultyItem,departmentNameItem,teacherNameItem,teacherAcademicRankItem,teacherAcademicDegreeItem,teacherWorkExperienceItem,buttons);
 
         int boxWeight = 435;
+        int boxHeight = 250;
         Scene scene = new Scene(root, boxWeight,boxHeight);
         window.setScene(scene);
         window.showAndWait();
@@ -56,7 +54,10 @@ public class AddBox {
         return new String[]{facultyItem.getText(),departmentNameItem.getText(),teacherNameItem.getText(),teacherAcademicRankItem.getText(),
                 teacherAcademicDegreeItem.getText(),teacherWorkExperienceItem.getPeriodYears(),teacherWorkExperienceItem.getPeriodMonths()} ;
     }
-
+    public String[] getValuesTest(){
+        return new String[]{facultyItem.getText(),departmentNameItem.getText(),teacherNameItem.getText(),teacherAcademicRankItem.getText(),
+                teacherAcademicDegreeItem.getText(),teacherWorkExperienceItem.getPeriod()} ;
+    }
 
     public Stage getWindow() {
         return window;

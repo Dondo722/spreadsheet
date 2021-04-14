@@ -9,9 +9,9 @@ public class Teacher {
     private String fullName;
     private String academicRank;
     private String academicDegree;
-    private Period workExperience;
+    private CustomPeriod workExperience;
 
-    public Teacher(String faculty, String departmentName, String fullName, String academicRank, String academicDegree, Period workExperience) {
+    public Teacher(String faculty, String departmentName, String fullName, String academicRank, String academicDegree, CustomPeriod workExperience) {
         this.faculty = faculty;
         this.departmentName = departmentName;
         this.fullName = fullName;
@@ -48,12 +48,8 @@ public class Teacher {
         return academicDegree;
     }
 
-    public Period getWorkExperience() {
+    public CustomPeriod getWorkExperience() {
         return workExperience;
-    }
-
-    public String getWorkExperienceString(){
-        return new String(workExperience.getYears()+" years " + workExperience.getMonths() + " months");
     }
 
     public void setFaculty(String faculty) {
@@ -76,7 +72,7 @@ public class Teacher {
         this.academicDegree = academicDegree;
     }
 
-    public void setWorkExperience(Period workExperience) {
+    public void setWorkExperience(CustomPeriod workExperience) {
         this.workExperience = workExperience;
     }
 }
