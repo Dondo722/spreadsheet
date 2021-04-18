@@ -1,22 +1,21 @@
 package org.example.View.SearchBoxes;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 public class RankSearchBox extends HBox {
-
-    Label rankLabel = new Label("Academic rank: ");
-    ChoiceBox<String> rankBox = new ChoiceBox<>();
-    Label facultyLabel = new Label("Faculty: ");
-    ChoiceBox<String> facultyBox = new ChoiceBox<>();
+    private final ChoiceBox<String> rankBox = new ChoiceBox<>();
+    private final ChoiceBox<String> facultyBox = new ChoiceBox<>();
 
     public RankSearchBox(){
         super();
-        this.setPadding(new Insets(5));
+        int inputElWidth = 115;
         this.setSpacing(10);
-        rankBox.setPrefWidth(50);
-        facultyBox.setPrefWidth(50);
+        Label rankLabel = new Label("Academic rank: ");
+        Label facultyLabel = new Label("Faculty: ");
+
+        rankBox.setPrefWidth(inputElWidth);
+        facultyBox.setPrefWidth(inputElWidth);
 
         this.getChildren().addAll(rankLabel,rankBox,facultyLabel,facultyBox);
     }
@@ -25,5 +24,13 @@ public class RankSearchBox extends HBox {
     }
     public void addFaculties(String[] items){
         facultyBox.getItems().addAll(items);
+    }
+
+    public String getRankBoxVal() {
+        return rankBox.getValue();
+    }
+
+    public String getFacultyBoxVal() {
+        return facultyBox.getValue();
     }
 }

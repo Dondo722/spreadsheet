@@ -1,6 +1,5 @@
 package org.example.Model;
 
-import java.time.Period;
 
 
 public class Teacher {

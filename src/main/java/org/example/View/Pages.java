@@ -58,23 +58,7 @@ public class Pages extends HBox {
         return buttonLast;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public Label getLabelCount() {
+        return labelCount;
+    }
 }

@@ -1,15 +1,12 @@
 package org.example.View;
 
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
+
 import javafx.scene.Scene;
-import javafx.scene.control.Pagination;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.example.Model.SpreadsheetModel;
-import org.example.Model.Teacher;
+
 
 
 public class SpreadsheetView extends BorderPane {
@@ -35,6 +32,10 @@ public class SpreadsheetView extends BorderPane {
     public <T>  void addTable(int columnCount, String[] columnNames, String[] columnValNames, ObservableList<T> list){
         Table<T> table = new Table<>(sceneWidth, columnCount,columnNames,columnValNames);
         table.setItems(list);
+        this.setCenter(table);
+    }
+
+    public <T>  void addTable(Table<T> table){
         this.setCenter(table);
     }
 
