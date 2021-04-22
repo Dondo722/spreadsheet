@@ -27,6 +27,30 @@ public class Teacher {
         return new String[]{"faculty","departmentName","fullName","academicRank","academicDegree","workExperience"};
     }
 
+    public String getValuesByName(String nameVal){
+        switch (nameVal){
+            case ("faculty"):{
+                return getFaculty();
+            }
+            case ("departmentName"):{
+                return getDepartmentName();
+            }
+            case ("fullName"):{
+                return getFullName();
+            }
+            case ("academicRank"):{
+                return academicRank;
+            }
+            case ("academicDegree"):{
+                return academicDegree;
+            }
+            case ("workExperience"):{
+                return getWorkExperience().toString();
+            }
+        }
+        return null;
+    }
+
     public String getFaculty() {
         return faculty;
     }

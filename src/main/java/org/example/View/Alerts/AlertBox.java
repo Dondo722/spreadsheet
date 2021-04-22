@@ -1,4 +1,4 @@
-package org.example.View;
+package org.example.View.Alerts;
 
 
 import javafx.geometry.Pos;
@@ -10,13 +10,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AlertBox {
-    public static void display(){
+    public static void display(String waring){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Alert!");
 
         VBox vBox = new VBox();
-        Label warning = new Label("Oops, something goes wrong!\n  check input correctness");
+        Label warning = new Label(waring);
         Button okButton = new Button("OK");
         okButton.setOnAction(e -> window.close());
         vBox.getChildren().addAll(warning,okButton);

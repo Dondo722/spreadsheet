@@ -20,12 +20,6 @@ public class AddPeriodItem extends HBox{
         textFieldMonths.setPrefWidth(fieldsWidth);
         this.getChildren().addAll(label,textFieldYears,textFieldMonths);
     }
-    public String getPeriodMonths(){
-        return textFieldMonths.getText();
-    }
-    public String getPeriodYears(){
-        return textFieldYears.getText();
-    }
     public String getPeriod(){
         return textFieldYears.getText() + " " + textFieldMonths.getText();
     }

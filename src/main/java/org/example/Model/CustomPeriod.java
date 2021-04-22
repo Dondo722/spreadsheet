@@ -4,23 +4,18 @@ public class CustomPeriod {
     private int month;
     private int year;
     public CustomPeriod(String string){
-        int delimiter = string.indexOf(" ");
-        this.year = Integer.parseInt(string.substring(0,delimiter));
-        this.month = Integer.parseInt(string.substring(delimiter + 1));
+        CustomPeriod period = getPeriod(string);
+        this.month = period.getMonth();
+        this.year = period.getYear();
     }
     public CustomPeriod(int year, int month){
         this.year = year;
         this.month = month;
     }
     public String toString(){
-        return  year + " year " + month + " month";
+        return  year + "y " + month + "m";
     }
 
-    public static boolean canBe(String string){
-        int delimiter = string.indexOf(" ");
-        if ((string.substring(0,delimiter)).matches("[a-zA-Z]+$")) return false;
-        return (!string.substring(delimiter + 1).matches("[a-zA-Z]+$"));
-    }
 
     public int getMonth() {
         return month;
@@ -39,11 +34,26 @@ public class CustomPeriod {
     }
 
     public static CustomPeriod getPeriod(String string){
-        int delimiter = string.indexOf(" year ");
-        int year = Integer.parseInt(string.substring(0,delimiter));
-        delimiter += 6;
-        int month = Integer.parseInt(string.substring(delimiter,string.lastIndexOf(" month")));
+        int year = Integer.parseInt(string.substring(0,string.indexOf("y")));
+        int month = Integer.parseInt(string.substring(string.indexOf(" ") + 1,string.indexOf("m")));
         return new CustomPeriod(year,month);
+    }
+
+    public static CustomPeriod createPeriod(String string){
+        int year = Integer.parseInt(string.substring(0,string.indexOf(" ")));
+        int month = Integer.parseInt(string.substring(string.indexOf(" ") + 1));
+        return new CustomPeriod(year,month);
+    }
+
+    public static boolean canBe(String string){
+        try{
+            Integer.parseInt(string.substring(0,string.indexOf(" ")));
+            Integer.parseInt(string.substring(string.indexOf(" ") + 1));
+            return true;
+        }
+        catch (NumberFormatException e){
+            return false;
+        }
     }
 
     public boolean moreThan(CustomPeriod period){

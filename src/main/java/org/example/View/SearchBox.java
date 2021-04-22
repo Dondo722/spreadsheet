@@ -1,6 +1,5 @@
 package org.example.View;
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -8,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.example.Model.Teacher;
 import org.example.View.SearchBoxes.NameSearchBox;
 import org.example.View.SearchBoxes.RankSearchBox;
 import org.example.View.SearchBoxes.WorkExpSearchBox;
@@ -28,6 +28,7 @@ public class SearchBox  {
     private  NameSearchBox nameSearchBox = new NameSearchBox();
     private  RankSearchBox rankSearchBox = new RankSearchBox();
     private  WorkExpSearchBox workExpSearchBox = new WorkExpSearchBox();
+    private final Table<Teacher> table = new Table<>(sceneWidth, Teacher.getNames().length,Teacher.getNames(),Teacher.getNamesVal());
 
     public void display(){
         Stage window = new Stage();
@@ -42,6 +43,7 @@ public class SearchBox  {
         botStatic.setSpacing(1);
         botHBox.getChildren().addAll(botStatic);
 
+        borderPane.setCenter(table);
         borderPane.setBottom(botHBox);
 
         window.setScene(scene);
@@ -80,8 +82,8 @@ public class SearchBox  {
         return workExpSearchBox;
     }
 
-    public BorderPane getBorderPane() {
-        return borderPane;
+    public Table<Teacher> getTable() {
+        return table;
     }
 
     public void addBotStatic(Node node){
@@ -115,11 +117,6 @@ public class SearchBox  {
         addBot(workExpSearchBox);
     }
 
-
-    public <T>  void addTable(Table<T> table){
-        borderPane.setCenter(table);
-    }
-
     public void setTopLabel(String string){
         Label label = new Label(string);
         label.setPadding(new Insets(4));
@@ -127,7 +124,7 @@ public class SearchBox  {
     }
 
     private void update(){
-        borderPane.getChildren().remove(borderPane.getCenter());
+        table.getItems().clear();
         setTopLabel("Input data ...");
     }
 

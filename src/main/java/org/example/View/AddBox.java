@@ -52,10 +52,6 @@ public class AddBox {
     }
     public String[] getValues(){
         return new String[]{facultyItem.getText(),departmentNameItem.getText(),teacherNameItem.getText(),teacherAcademicRankItem.getText(),
-                teacherAcademicDegreeItem.getText(),teacherWorkExperienceItem.getPeriodYears(),teacherWorkExperienceItem.getPeriodMonths()} ;
-    }
-    public String[] getValuesTest(){
-        return new String[]{facultyItem.getText(),departmentNameItem.getText(),teacherNameItem.getText(),teacherAcademicRankItem.getText(),
                 teacherAcademicDegreeItem.getText(),teacherWorkExperienceItem.getPeriod()} ;
     }
 

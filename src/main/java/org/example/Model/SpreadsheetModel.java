@@ -25,7 +25,7 @@ public class SpreadsheetModel {
         String fullName = teacherData[2];
         String academicRank= teacherData[3];
         String academicDegree = teacherData[4];
-        CustomPeriod workExperience = new CustomPeriod(teacherData[5]);
+        CustomPeriod workExperience = CustomPeriod.createPeriod(teacherData[5]);
 
         teachers.add(new Teacher(faculty,departmentName,fullName,academicRank,academicDegree,workExperience));
     }

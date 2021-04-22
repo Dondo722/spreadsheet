@@ -6,7 +6,7 @@ import javafx.scene.layout.HBox;
 
 
 public class WorkExpSearchBox extends HBox {
-    private  ChoiceBox<String> fromBox = new ChoiceBox<>();
+    private final ChoiceBox<String> fromBox = new ChoiceBox<>();
     private final ChoiceBox<String> toBox = new ChoiceBox<>();
 
     public WorkExpSearchBox(){
