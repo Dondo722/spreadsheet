@@ -95,37 +95,43 @@ public class SpreadsheetModel {
     }
 
 
-    public ObservableList<Teacher> getTeachersByName(String name){
-        ObservableList<Teacher> list = FXCollections.observableArrayList();
+    public ObservableList<Teacher> getTeachersByName(ObservableList<Teacher> list,String name){
         for (Teacher teacher : teachers){
-            if (teacher.getFullName().contains(name) || teacher.getFullName().equals(name))
+            if (list.contains(teacher))continue;
+            if ( teacher.getFullName().equals(name)) {
                 list.add(teacher);
+                continue;
+            }
+            if (teacher.getFullName().contains(name)) {
+                int index = teacher.getFullName().indexOf(name);
+                if(index != 0 && teacher.getFullName().charAt(index - 1) != ' ') continue;
+                if (index + name.length() != teacher.getFullName().length() && teacher.getFullName().charAt(index + name.length()) != ' ')
+                    continue;
+                list.add(teacher);
+            }
         }
         return list;
     }
-    public ObservableList<Teacher> getTeachersByDepartment(String department){
-        ObservableList<Teacher> list = FXCollections.observableArrayList();
+    public void getTeachersByDepartment(ObservableList<Teacher> list,String department){
         for (Teacher teacher : teachers){
+            if (list.contains(teacher))continue;
             if (teacher.getDepartmentName().equals(department))
                 list.add(teacher);
         }
-        return list;
     }
-    public ObservableList<Teacher> getTeachersByRank(String rank){
-        ObservableList<Teacher> list = FXCollections.observableArrayList();
+    public void getTeachersByRank(ObservableList<Teacher> list,String rank){
         for (Teacher teacher : teachers){
+            if (list.contains(teacher))continue;
             if (teacher.getAcademicRank().equals(rank))
                 list.add(teacher);
         }
-        return list;
     }
-    public ObservableList<Teacher> getTeachersByFaculty(String faculty){
-        ObservableList<Teacher> list = FXCollections.observableArrayList();
+    public void getTeachersByFaculty(ObservableList<Teacher> list,String faculty){
         for (Teacher teacher : teachers){
+            if (list.contains(teacher))continue;
             if (teacher.getFaculty().equals(faculty))
                 list.add(teacher);
         }
-        return list;
     }
     public ObservableList<Teacher> getTeachersByExp(String lowVal, String topVal){
         ObservableList<Teacher> list = FXCollections.observableArrayList();

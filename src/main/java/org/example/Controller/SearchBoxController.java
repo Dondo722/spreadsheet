@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.Model.SpreadsheetModel;
 import org.example.Model.Teacher;
-import org.example.View.Alerts.FoundAlert;
 import org.example.View.Alerts.InputAlert;
 import org.example.View.SearchBox;
 import org.example.View.SearchBoxes.NameSearchBox;
@@ -39,9 +38,9 @@ public class SearchBoxController {
             return;
         }
          if (nameBox.getTeacherName() != null && !nameBox.getTeacherName().getText().equals(""))
-             teachers.addAll(model.getTeachersByName(nameBox.getTeacherName().getText()));
+             model.getTeachersByName(teachers,nameBox.getTeacherName().getText());
          if (nameBox.getDepartmentName() != null)
-             teachers.addAll(model.getTeachersByDepartment(nameBox.getDepartmentName()));
+             model.getTeachersByDepartment(teachers,nameBox.getDepartmentName());
          SearchBoxController.addToView(searchBox,teachers);
     }
     private static void rankSearchBoxFind(SearchBox searchBox,SpreadsheetModel model){
@@ -52,9 +51,9 @@ public class SearchBoxController {
             return;
         }
         if (rankBox.getRankBoxVal() != null )
-            teachers.addAll(model.getTeachersByRank(rankBox.getRankBoxVal()));
+            model.getTeachersByRank(teachers,rankBox.getRankBoxVal());
         if (rankBox.getFacultyBoxVal() != null)
-            teachers.addAll(model.getTeachersByFaculty(rankBox.getFacultyBoxVal()));
+            model.getTeachersByFaculty(teachers,rankBox.getFacultyBoxVal());
         SearchBoxController.addToView(searchBox,teachers);
     }
     private static void expSearchBoxFind(SearchBox searchBox,SpreadsheetModel model){
@@ -71,7 +70,6 @@ public class SearchBoxController {
     }
     private static void addToView(SearchBox searchBox,ObservableList<Teacher> teachers){
         setTopLabel(searchBox,"Found teachers: " + teachers.size());
-        FoundAlert.display(teachers.size());
         SearchBoxController.addTableToSearchBox(searchBox, teachers);
     }
 }

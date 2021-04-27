@@ -12,6 +12,10 @@ public class PagesController {
         updateTeachers(view,model);
 
         pages.getRawsField().setOnAction(e -> {
+            if(model.getList().size() == 0) {
+                pages.getRawsField().clear();
+                return;
+            }
             try{
                 int saveIndex = PagesModel.getRawsCount() * (PagesModel.getCurrentPage() -1);
                 PagesModel.setRawsCount(Integer.parseInt(pages.getRawsField().getText()));

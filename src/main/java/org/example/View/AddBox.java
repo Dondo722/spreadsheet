@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.example.View.AddBoxItems.AddNameItem;
 import org.example.View.AddBoxItems.AddPeriodItem;
 import org.example.View.AddBoxItems.AddItem;
 
@@ -21,7 +22,7 @@ public class AddBox {
     int itemFieldWidth = 310;
     private final AddItem facultyItem = new AddItem(spacing,itemLabelWidth,"Faculty:",itemFieldWidth,"faculty name");
     private final AddItem departmentNameItem = new AddItem(spacing,itemLabelWidth,"Department:",itemFieldWidth,"department name");
-    private final AddItem teacherNameItem = new AddItem(spacing,itemLabelWidth,"Teacher:",itemFieldWidth,"full name");
+    private final AddNameItem teacherNameItem = new AddNameItem(spacing,itemLabelWidth,"Teacher:",itemFieldWidth);
     private final AddItem teacherAcademicRankItem = new AddItem(spacing,itemLabelWidth,"Academic rank:",itemFieldWidth,"teacher academic rank");
     private final AddItem teacherAcademicDegreeItem = new AddItem(spacing,itemLabelWidth,"Academic degree:",itemFieldWidth,"teacher academic degree");
     private final AddPeriodItem teacherWorkExperienceItem = new AddPeriodItem(spacing,itemLabelWidth,"Work experience:",itemFieldWidth/2);

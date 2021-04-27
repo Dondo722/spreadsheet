@@ -110,7 +110,7 @@ public class MainMenuController {
                 }
             }
         };
-
+        model.getList().clear();
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
 
