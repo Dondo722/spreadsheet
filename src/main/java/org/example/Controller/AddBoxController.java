@@ -11,7 +11,7 @@ public class AddBoxController {
             if(model.canAddTeacher(addBox.getValues())) {
                 model.addTeacher(addBox.getValues());
                 addBox.getWindow().close();
-                PagesController.update(view,model);
+                PagesController.update(view,model.getList());
             }
             else InputAlert.display();
         });

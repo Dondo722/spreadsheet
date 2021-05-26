@@ -7,11 +7,7 @@ import java.util.Vector;
 
 
 public class SpreadsheetModel {
-    private  ObservableList<Teacher> teachers = FXCollections.observableArrayList();
-
-    public  void addTeacher(String faculty, String departmentName, String fullName, String academicRank, String academicDegree, CustomPeriod workExperience ){
-        teachers.add(new Teacher(faculty,departmentName,fullName,academicRank,academicDegree,workExperience));
-    }
+    private final ObservableList<Teacher> teachers = FXCollections.observableArrayList();
 
     public boolean canAddTeacher(String[] teacherData){
         for (int i = 0; i < teacherData.length - 1;i++){
@@ -34,9 +30,6 @@ public class SpreadsheetModel {
         return teachers;
     }
 
-    public ObservableList<Teacher> getSubList(int fromIndex, int toIndex){
-        return FXCollections.observableArrayList(teachers.subList(fromIndex,toIndex));
-    }
 
     public String[] getDepartmentList(){
         Vector<String> list = new Vector<>();
@@ -70,7 +63,7 @@ public class SpreadsheetModel {
     public String[] getPeriodList(){
         Vector<CustomPeriod> list = new Vector<>();
         for (Teacher teacher : teachers) {
-            if(!list.contains(teacher.getWorkExperience())){
+            if(!isTeacherPeriodAdded(list,teacher)){
                 list.add(teacher.getWorkExperience());
             }
         }
@@ -95,7 +88,7 @@ public class SpreadsheetModel {
     }
 
 
-    public ObservableList<Teacher> getTeachersByName(ObservableList<Teacher> list,String name){
+    public void getTeachersByName(ObservableList<Teacher> list, String name){
         for (Teacher teacher : teachers){
             if (list.contains(teacher))continue;
             if ( teacher.getFullName().equals(name)) {
@@ -110,7 +103,6 @@ public class SpreadsheetModel {
                 list.add(teacher);
             }
         }
-        return list;
     }
     public void getTeachersByDepartment(ObservableList<Teacher> list,String department){
         for (Teacher teacher : teachers){
@@ -143,12 +135,13 @@ public class SpreadsheetModel {
         return list;
     }
 
-
-
-
-
-    public void setTeachers(ObservableList<Teacher> teachers) {
-        this.teachers = teachers;
+    public boolean isTeacherPeriodAdded(Vector<CustomPeriod> list,Teacher teacher){
+        CustomPeriod teacherPeriod = teacher.getWorkExperience();
+        for (CustomPeriod period : list){
+            if (period.isEqual(teacherPeriod))
+                return true;
+        }
+        return false;
     }
 
 }

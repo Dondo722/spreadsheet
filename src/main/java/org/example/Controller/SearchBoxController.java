@@ -2,6 +2,7 @@ package org.example.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.example.Model.CustomPeriod;
 import org.example.Model.SpreadsheetModel;
 import org.example.Model.Teacher;
 import org.example.View.Alerts.InputAlert;
@@ -59,17 +60,16 @@ public class SearchBoxController {
     private static void expSearchBoxFind(SearchBox searchBox,SpreadsheetModel model){
         WorkExpSearchBox expBox = searchBox.getWorkExpSearchBox();
         ObservableList<Teacher> teachers = FXCollections.observableArrayList();
-        if (expBox.getFromVal() == null || expBox.getToVal()== null)InputAlert.display();
+        if (new CustomPeriod(expBox.getFromVal()).moreThan(new CustomPeriod(expBox.getToVal())))
+            InputAlert.display();
+        else if (expBox.getFromVal() == null || expBox.getToVal()== null )InputAlert.display();
         else {
             teachers.addAll(model.getTeachersByExp(expBox.getFromVal(),expBox.getToVal()));
             SearchBoxController.addToView(searchBox,teachers);
         }
     }
-    protected static void setTopLabel(SearchBox searchBox,String string){
-        searchBox.setTopLabel(string);
-    }
     private static void addToView(SearchBox searchBox,ObservableList<Teacher> teachers){
-        setTopLabel(searchBox,"Found teachers: " + teachers.size());
+        PagesController.setController(searchBox, teachers);
         SearchBoxController.addTableToSearchBox(searchBox, teachers);
     }
 }

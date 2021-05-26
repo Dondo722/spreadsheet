@@ -62,9 +62,12 @@ public class CustomPeriod {
         return this.getMonth() > period.getMonth();
     }
     public boolean moreOrEqualThan(CustomPeriod period){
-        if(this.getYear() >= period.getYear()) return true;
+        if(this.getYear() > period.getYear()) return true;
         else if(this.getYear() < period.getYear()) return  false;
         return this.getMonth() >= period.getMonth();
+    }
+    public boolean isEqual(CustomPeriod period){
+        return this.getYear() == period.getYear() && this.getMonth() == period.getMonth();
     }
 
 }

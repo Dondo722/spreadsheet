@@ -19,9 +19,8 @@ public class DeleteBoxController {
         teachersSelected.forEach(model.getList()::remove);
         DeleteAlert.display(teachersSelected.size());
         deleteBox.getButtonFind().fire();
-
-       // PagesController.update(view,model);
-       // SearchBoxController.setTopLabel(deleteBox,"Found teachers: " + allTeachers.size());
+        //PagesController.setFirstPage(deleteBox,);
+        PagesController.update(view,model.getList());
     }
 
 }

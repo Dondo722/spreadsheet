@@ -2,43 +2,46 @@ package org.example.Model;
 
 public class PagesModel {
 
-    private static int currentPage = 1;
-    private static int lastPage = 1;
-    private static int rawsCount = -1;
+    private int currentPage = 1;
+    private int lastPage = 1;
+    private int rawsCount = -1;
 
-    public static int getCurrentPage() {
+    public int getCurrentPage() {
         return currentPage;
     }
 
-    public static int getLastPage() {
+    public int getLastPage() {
         return lastPage;
     }
 
-    public static int getRawsCount() {
+    public int getRawsCount() {
         return rawsCount;
     }
 
-    public static void setCurrentPage(int currentPage) {
-        PagesModel.currentPage = currentPage;
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 
-    public static void countLastPage(int maxRaws){
+    public void countLastPage(int maxRaws){
         if(rawsCount == -1 )return;
-        PagesModel.setLastPage((int)(Math.ceil( maxRaws/((double) PagesModel.getRawsCount()))));
+        this.setLastPage((int)(Math.ceil( maxRaws/((double) this.getRawsCount()))));
     }
 
-    public static void countCurrentPage(int num){
+    public void countCurrentPage(int num){
         for(int i = 0; i < lastPage; i ++){
-            if (i * PagesModel.rawsCount <= num && (i+1) * PagesModel.rawsCount >= num)
-                PagesModel.currentPage  = (i+1);
+            if (i * this.rawsCount <= num && (i+1) * this.rawsCount >= num)
+                this.currentPage  = (i+1);
         }
     }
 
-    public static void setLastPage(int lastPage) {
-        PagesModel.lastPage = lastPage;
+    public void setLastPage(int lastPage) {
+        this.lastPage = lastPage;
     }
 
-    public static void setRawsCount(int rawsCount) {
-        PagesModel.rawsCount = rawsCount;
+    public void setRawsCount(int rawsCount) {
+        this.rawsCount = rawsCount;
     }
+
+
+
 }

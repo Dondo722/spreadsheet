@@ -53,7 +53,7 @@ public class MainMenuController {
             }
         }
         catch (Exception ex) {System.out.println(ex.getMessage());}
-        PagesController.updateTeachers(view, model);
+        PagesController.update(view, model.getList());
     }
 
     protected static void addBox(SpreadsheetView view, SpreadsheetModel model){

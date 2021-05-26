@@ -10,7 +10,7 @@ public class DeleteBox extends SearchBox{
         this.getTable().getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
-        super.addBotStatic(buttonDelete);
+        super.addTopStatic(buttonDelete);
     }
 
     public Button getButtonDelete() {

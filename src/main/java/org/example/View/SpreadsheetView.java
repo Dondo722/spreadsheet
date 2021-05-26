@@ -5,16 +5,18 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.Model.Teacher;
+import org.example.View.Page.Pageable;
+import org.example.View.Page.Pages;
 
 
-public class SpreadsheetView extends BorderPane {
+public class SpreadsheetView extends BorderPane implements Pageable {
     private int sceneWidth = 1400;
     private int sceneHeight = 900;
     private final Stage stage = new Stage();
     private final MainMenu mainMenu = new MainMenu();
     private final LeftMenu leftMenu = new LeftMenu();
     private final Pages pages = new Pages();
-    private Table<Teacher> table = new Table<>(sceneWidth, Teacher.getNames().length,Teacher.getNames(),Teacher.getNamesVal());
+    private Table<Teacher> table = new Table<>(sceneWidth - 70, Teacher.getNames().length,Teacher.getNames(),Teacher.getNamesVal());
 
 
     public SpreadsheetView(){

@@ -1,7 +1,6 @@
-package org.example.View;
+package org.example.View.Page;
 
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,7 +19,7 @@ public class Pages extends HBox {
 
 
 
-    Pages(){
+    public Pages(){
         super();
         this.setPrefHeight(50);
         this.setAlignment(Pos.CENTER);
@@ -61,4 +60,5 @@ public class Pages extends HBox {
     public Label getLabelCount() {
         return labelCount;
     }
+
 }

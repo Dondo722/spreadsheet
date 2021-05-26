@@ -8,17 +8,19 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.Model.Teacher;
+import org.example.View.Page.Pageable;
+import org.example.View.Page.Pages;
 import org.example.View.SearchBoxes.NameSearchBox;
 import org.example.View.SearchBoxes.RankSearchBox;
 import org.example.View.SearchBoxes.WorkExpSearchBox;
 
 
-public class SearchBox  {
+public class SearchBox implements Pageable {
     private final int  sceneWidth = 650;
-    private final int sceneHeight = 425;
+    private final int sceneHeight = 480;
     private final BorderPane borderPane = new BorderPane();
-    private final HBox botHBox = new HBox();
-    private final HBox botStatic = new HBox();
+    private final HBox topHBox = new HBox();
+    private final HBox topStatic = new HBox();
     private final Button buttonFind = new Button("Find");
     private final MenuBar menuBar = new MenuBar();
     private final Menu menu = new Menu("Find by");
@@ -29,6 +31,7 @@ public class SearchBox  {
     private  RankSearchBox rankSearchBox = new RankSearchBox();
     private  WorkExpSearchBox workExpSearchBox = new WorkExpSearchBox();
     private final Table<Teacher> table = new Table<>(sceneWidth, Teacher.getNames().length,Teacher.getNames(),Teacher.getNamesVal());
+    private final Pages pages = new Pages();
 
     public void display(){
         Stage window = new Stage();
@@ -36,15 +39,16 @@ public class SearchBox  {
 
         menu.getItems().addAll(itemName,itemRank,itemExperience);
         menuBar.getMenus().addAll(menu);
-        botHBox.setSpacing(12);
-        botHBox.setPadding(new Insets(10));
+        topHBox.setSpacing(12);
+        topHBox.setPadding(new Insets(10));
 
-        botStatic.getChildren().addAll(buttonFind,menuBar);
-        botStatic.setSpacing(1);
-        botHBox.getChildren().addAll(botStatic);
+        topStatic.getChildren().addAll(buttonFind,menuBar);
+        topStatic.setSpacing(1);
+        topHBox.getChildren().addAll(topStatic);
 
         borderPane.setCenter(table);
-        borderPane.setBottom(botHBox);
+        borderPane.setTop(topHBox);
+        borderPane.setBottom(pages);
 
         window.setScene(scene);
         window.showAndWait();
@@ -82,23 +86,29 @@ public class SearchBox  {
         return workExpSearchBox;
     }
 
+    @Override
+    public Pages getPages() {
+        return pages;
+    }
+
+    @Override
     public Table<Teacher> getTable() {
         return table;
     }
 
-    public void addBotStatic(Node node){
-        botStatic.getChildren().add(node);
+    public void addTopStatic(Node node){
+        topStatic.getChildren().add(node);
     }
-    private void addBot(Node node){
-        botHBox.getChildren().clear();
-        botHBox.getChildren().addAll(botStatic,node);
+    private void addTop(Node node){
+        topHBox.getChildren().clear();
+        topHBox.getChildren().addAll(topStatic,node);
     }
     public void nameSearchBoxCase(String[] departments){
         update();
         NameSearchBox tempNameSearchBox = new NameSearchBox();
         tempNameSearchBox.addDepartments(departments);
         nameSearchBox = tempNameSearchBox;
-        addBot(nameSearchBox);
+        addTop(nameSearchBox);
     }
     public void rankSearchBoxCase(String[] ranks,String[] faculties){
         update();
@@ -106,7 +116,7 @@ public class SearchBox  {
         tempRankSearchBox.addRanks(ranks);
         tempRankSearchBox.addFaculties(faculties);
         rankSearchBox = tempRankSearchBox;
-        addBot(rankSearchBox);
+        addTop(rankSearchBox);
     }
     public void workExpSearchBoxCase(String[] periods){
         update();
@@ -114,18 +124,20 @@ public class SearchBox  {
         expSearchBox.addPeriodFrom(periods);
         expSearchBox.addPeriodTo(periods);
         workExpSearchBox = expSearchBox;
-        addBot(workExpSearchBox);
+        addTop(workExpSearchBox);
     }
 
-    public void setTopLabel(String string){
-        Label label = new Label(string);
-        label.setPadding(new Insets(4));
-        borderPane.setTop(label);
-    }
+//    public void setTopLabel(String string){
+//        Label label = new Label(string);
+//        label.setPadding(new Insets(4));
+//        borderPane.setTop(label);
+//    }
+
+
 
     private void update(){
         table.getItems().clear();
-        setTopLabel("Input data ...");
+        //setTopLabel("Input data ...");
     }
 
 }
